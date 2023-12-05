@@ -19,7 +19,7 @@ public class Solution {
 
         try {
             return Integer.parseInt(output.toString());
-        } catch ( NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             return 0;
         }
     }
