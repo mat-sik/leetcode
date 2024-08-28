@@ -3,6 +3,14 @@ import java.util.Map;
 
 public class Solution {
 
+    /*
+    The Idea is to create a graph, where each edge points to the node with number greater by one.
+    Then traveres the graph, by remembering the longest path that have been walked from each node.
+    This checking is required to only traverse the full graph once. So graph bulding is linear and graph traversal
+    is also linear. There is also one subroutine which is used to populate the path lengtsh, and it is run
+    for each path and has length of the path, so it is like traversal time of a path twice, once to get the path length
+    and once to populate the hashmap with lengths.
+     */
     public static void main(String[] args) {
         System.out.println("hello");
 
