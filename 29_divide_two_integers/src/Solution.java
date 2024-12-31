@@ -5,15 +5,9 @@ class Solution {
         System.out.println(out);
     }
 
-    public static int divide(int dividendA, int divisorA) {
-        long dividend = dividendA;
-        long divisor = divisorA;
+    public static int divide(long dividend, long divisor) {
         if (dividend == -2147483648 && divisor == -1) {
             return 2147483647;
-        }
-
-        if (dividend == 0) {
-            return 0;
         }
 
         boolean isDividendPositive = dividend > 0;
@@ -27,15 +21,7 @@ class Solution {
             divisor *= -1;
         }
 
-        long count;
-
-        if (dividend == divisor) {
-            count = 1;
-        } else if (divisor == 1) {
-            count = dividend;
-        } else {
-            count = findCount(dividend, divisor);
-        }
+        long count = binarySearchDivide(dividend, divisor);
 
         if ((isDividendPositive && !isDivisorPositive) ||
                 (!isDividendPositive && isDivisorPositive)) {
@@ -45,9 +31,9 @@ class Solution {
         return (int) count;
     }
 
-    public static long findCount(long dividend, long divisor) {
-        long low = 0;
-        long high = dividend / 2;
+    public static long binarySearchDivide(long dividend, long divisor) {
+        long low = -1;
+        long high = dividend + 1;
         while (high - low > 1) {
             long mid = (high - low) / 2 + low;
             if (mid * divisor > dividend) {
@@ -56,11 +42,6 @@ class Solution {
                 low = mid;
             }
         }
-
-        while ((low + 1) * divisor <= dividend) {
-            low++;
-        }
-
         return low;
     }
 }
